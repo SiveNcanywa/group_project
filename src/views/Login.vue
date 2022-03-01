@@ -52,11 +52,11 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  created() {
-    if (this.loggedIn) {
-      this.$router.push("/profile");
-    }
-  },
+  // created() {
+  //   if (this.loggedIn) {
+  //     this.$router.push("/profile");
+  //   }
+  // },
   methods: {
     handleLogin(user) {
       this.loading = true;
@@ -92,7 +92,7 @@ body {
   background-repeat: no-repeat;
 }
 .login{
-  background-color: black;
+  background-color: #444444;
   width:100%;
   height:100vh;
 }

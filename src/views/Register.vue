@@ -69,11 +69,11 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  mounted() {
-    if (this.loggedIn) {
-      this.$router.push("/profile");
-    }
-  },
+  // mounted() {
+  //   if (this.loggedIn) {
+  //     this.$router.push("/profile");
+  //   }
+  // },
   methods: {
     handleRegister(user) {
       this.message = "";
@@ -109,11 +109,11 @@ export default {
 	 margin: 0;
 	 padding: 0;
 	 overflow: hidden;
-	 background-color:black;
+	 background-color:#444444;
 	 
 }
 .register{
-  background-color: black;
+  background-color:#444444;
   height: 100vh;
   width: 100%;
 }

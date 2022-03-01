@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .contact{
-    background-color: black;
+    background-color: #444444;
     width: 100%;
     height: 100vh;
 }
@@ -62,7 +62,7 @@ button, select {
 }
 
 button, input, select, textarea {
-  color: #5A5A5A;
+  color: white;
   font: inherit;
   margin: 0;
 }
@@ -89,7 +89,7 @@ form {
 }
 
 h1 {
-  color: #474544;
+  color: white;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 7px;
@@ -125,7 +125,7 @@ input[type='text'], [type='email'], select, textarea {
 	background: none;
   border: none;
 	border-bottom: solid 2px white;
-	color: #474544;
+	color: white;
 	font-size: 1.000em;
   font-weight: 400;
   letter-spacing: 1px;
@@ -172,6 +172,7 @@ select::-ms-expand {
 
 .subject {
   width: 100%;
+  
 }
 
 .telephone {
@@ -186,21 +187,21 @@ textarea {
 }
 
 ::-webkit-input-placeholder {
-	color: #474544;
+	color: white;
 }
 
 :-moz-placeholder { 
-	color: #474544;
+	color: white;
 	opacity: 1;
 }
 
 ::-moz-placeholder {
-	color: #474544;
+	color: white;
 	opacity: 1;
 }
 
 :-ms-input-placeholder {
-	color: #474544;
+	color: white;
 }
 
 #form_button {
