@@ -1,83 +1,93 @@
 <template>
-<div class="login">
-<div class="signupSection">
-  <div class="info">
-    <h2>Q-Cars</h2>
-    <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
-    <p>Bringing You Quality Is Our Priority</p>
+  <div class="login">
+    <div class="signupSection">
+      <div class="info">
+        <h2>Q-Cars</h2>
+        <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+        <p>Bringing You Quality Is Our Priority</p>
+      </div>
+      <form
+        @submit.prevent="login"
+       
+       
+        class="signupForm"
+      
+      >
+        <h2>Sign In</h2>
+        <ul class="noBullet">
+          <li>
+            <label for="fullname"></label>
+            <input
+              type="text"
+              class="inputFields"
+              id="fullname"
+              name="fullname"
+              v-model="fullname"
+              placeholder="fullname"
+             
+              oninput="return fullNameValidation(this.value)"
+              required
+            />
+          </li>
+          <li>
+            <label for="password"></label>
+            <input
+              type="password"
+              class="inputFields"
+              id="password"
+              name="password"
+              v-model="password"
+              placeholder="Password"
+             
+              oninput="return passwordValidation(this.value)"
+              required
+            />
+          </li>
+
+          <li id="center-btn">
+            <input
+              type="submit"
+              id="join-btn"
+              name="Login"
+              alt="Login"
+              value="Login"
+            />
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
-  <form action="#" method="POST" class="signupForm" name="signupform">
-    <h2>Sign In</h2>
-    <ul class="noBullet">
-      <li>
-        <label for="username"></label>
-        <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value="" oninput="return userNameValidation(this.value)" required/>
-      </li>
-      <li>
-        <label for="password"></label>
-        <input type="password" class="inputFields" id="password" name="password" placeholder="Password" value="" oninput="return passwordValidation(this.value)" required/>
-      </li>
-     
-      <li id="center-btn">
-        <input type="submit" id="join-btn" name="Login" alt="Login" value="Login">
-      </li>
-    </ul>
-  </form>
-</div>
-</div>
 </template>
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
 export default {
-  name: "Login",
-  components: {
-    Form,
-    Field,
-    ErrorMessage,
-  },
-  data() {
-    const schema = yup.object().shape({
-        created() {
-    if (this.loggedIn) {
-      this.$router.push("/profile");
-    }
-  },username: yup.string().required("Username is required!"),
-      password: yup.string().required("Password is required!"),
-    });
-    return {
-      loading: false,
-      message: "",
-      schema,
+  data(){
+    return{
+      email:"",
+      password:"",
     };
   },
-  computed: {
-    loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
-    },
-  },
-  created() {
-    if (this.loggedIn) {
-      this.$router.push("/profile");
-    }
-  },
-  methods: {
-    handleLogin(user) {
-      this.loading = true;
-      this.$store.dispatch("auth/login", user).then(
-        () => {
-          this.$router.push("/profile");
+  methods:{
+    login(){
+      fetch("http://qcars-backend-finale.herokuapp.com/users/signin",{
+        method:"POST",
+        body:JSON.stringify({
+          fullname:this.fullname,
+          password:this.password
+        }),
+        headers:{
+           "Content-type":"application/json;charset=UTF-8",
         },
-        (error) => {
-          this.loading = false;
-          this.message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-        }
-      );
+      })
+      .then((response)=>response.json())
+      .then((json)=>{
+        console.log(json);
+        alert("User logged in");
+        localStorage.setItem("jwt",json.jwt);
+        this.$router.push({name:"Products"})
+      })
+      .catch((err)=>{
+        alert(err);
+      });
     },
   },
 };
@@ -95,10 +105,10 @@ body {
   background: #111;
   background-repeat: no-repeat;
 }
-.login{
+.login {
   background-color: #444444;
-  width:100%;
-  height:100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 .signupSection {
@@ -178,6 +188,4 @@ body {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
-
 </style>
- 

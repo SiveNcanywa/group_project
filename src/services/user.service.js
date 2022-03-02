@@ -3,16 +3,7 @@ import authHeader from './auth-header';
 const API_URL = 'http://qcars-backend-finale.herokuapp.com/users';
 class UserService {
   getPublicContent() {
-    return axios.get(API_URL + 'all');
-  }
-  getUserBoard() {
-    return axios.get(API_URL + 'user', { headers: authHeader() });
-  }
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
-  }
-  getAdminBoard() {
-    return axios.get(API_URL + 'admin', { headers: authHeader() });
+    return axios.get(API_URL , {headers:authHeader()} );
   }
 }
 export default new UserService();

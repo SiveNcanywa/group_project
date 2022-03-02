@@ -11,7 +11,7 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Username</label><input type="text" class="form-control" placeholder="username" value=""></div>
+                    <div class="col-md-6"><label class="labels">Full Name</label><input type="text" class="form-control" placeholder="Full Name" ></div>
                     <div class="col-md-6"><label class="labels">Phone number</label><input type="text" class="form-control" value="" placeholder="number"></div>
                 </div>
                 <div class="row mt-3">
@@ -43,11 +43,11 @@ export default {
       return this.$store.state.auth.user;
     }
   },
-  // mounted() {
-  //   if (!this.currentUser) {
-  //     this.$router.push('/login');
-  //   }
-  // }
+//   mounted() {
+//     if (!this.currentUser) {
+//       this.$router.push('/login');
+//     }
+//   }
 };
 </script>
 <style scoped>

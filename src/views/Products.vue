@@ -37,23 +37,22 @@
       </div>
     </div>
      <main role="main">
-  <div class="product">
+  <div v-for="product in products" :key="product" class="product" >
     <figure>
-      <img src="https://raw.githubusercontent.com/itbruno/productpreview/master/assets/img/t-shirt.jpg" alt="Product Image" class="product-image">
+      <img :src="products.image" alt="Product Image" class="product-image">
         </figure>
 
       <div class="product-description">
 
         <div class="info">
-          <h1>LOREM IPSUM</h1>
+          <h1>{{product.title}}</h1>
           <p>
-            Lorem Ipsum is simply dummy
-            printing and typesetting industry
+          {{product.description}}
           </p>
         </div>
 
         <div class="price">
-          89
+          {{product.price}}
         </div>
       </div>
 
@@ -79,8 +78,23 @@
 
 <script>
 export default {
+  data(){
+    return{
+      products:[]
+    };
+  },
+  mounted() {
+    fetch("http://qcars-backend-finale.herokuapp.com/products")
+    .then((res)=>res.json())
+    .then((data)=>{
+      this.products=data;
+      console.log(data,this.products)
 
-}
+    });
+
+  },
+
+};
 </script>
 
 <style scoped>
