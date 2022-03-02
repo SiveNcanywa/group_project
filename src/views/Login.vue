@@ -52,6 +52,7 @@
               alt="Login"
               value="Login"
             />
+            
           </li>
         </ul>
       </form>
@@ -62,6 +63,7 @@
 export default {
   data(){
     return{
+      
       email:"",
       password:"",
     };

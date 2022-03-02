@@ -13,9 +13,7 @@ const routes = [
     path: '/Home',
     name: 'Home',
     component: Home,
-    meta: {
-      hideNavbar: true,
-     }
+   
   },
   {
     path: '/About',
@@ -59,14 +57,11 @@ const router = createRouter({
   routes
 })
 // router.beforeEach((to, from, next) => {
-//   const publicPages = ['/Login', '/Register', '/'];
+//   const publicPages = ['/Login', '/Register', '/Home'];
 //   const authRequired = !publicPages.includes(to.path);
 //   const loggedIn = localStorage.getItem('user');
-//   if (authRequired && !loggedIn) {
-//     next('/Login');
-//   } else {
-//     next();
-//   }
+//   if (to.path == '/Products' || to.path =='/Cart' && !loggedIn) next({name:'Products'})
+//   else next()
 // });
 
 export default router
