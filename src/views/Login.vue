@@ -38,7 +38,11 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Username is required!"),
+        created() {
+    if (this.loggedIn) {
+      this.$router.push("/profile");
+    }
+  },username: yup.string().required("Username is required!"),
       password: yup.string().required("Password is required!"),
     });
     return {
@@ -52,11 +56,11 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  // created() {
-  //   if (this.loggedIn) {
-  //     this.$router.push("/profile");
-  //   }
-  // },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/profile");
+    }
+  },
   methods: {
     handleLogin(user) {
       this.loading = true;
@@ -174,5 +178,6 @@ body {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
+
 </style>
  

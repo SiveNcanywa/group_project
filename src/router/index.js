@@ -12,7 +12,10 @@ const routes = [
   {
     path: '/Home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      hideNavbar: true,
+     }
   },
   {
     path: '/About',

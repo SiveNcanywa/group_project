@@ -42,10 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="counter">
-        <vue3-autocounter ref='counter' :startAmount='0' :endAmount='2021' :duration='3' prefix='$' suffix='USD' separator=',' decimalSeparator='.' :decimals='2' :autoinit='true' @finished='alert(`Counting finished!`)'/>
-   </div>
- 
+       
 </div>
   
 </template>
@@ -58,12 +55,7 @@ export default {
 </script>
 
 <style scoped>
-.counter{
-    color: white;
-    background-color: white;
-    width: 50%;
 
-}
 .about{
     background-color: #444444;
     width: 100%;

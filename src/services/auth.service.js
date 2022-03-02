@@ -1,11 +1,12 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8080/api/auth/';
+const API_URL = 'http://qcars-backend-finale.herokuapp.com/users';
 class AuthService {
   login(user) {
     return axios
       .post(API_URL + 'signin', {
-        username: user.username,
+        fullname: user.fullname,
         password: user.password
+
       })
       .then(response => {
         if (response.data.accessToken) {
@@ -19,9 +20,10 @@ class AuthService {
   }
   register(user) {
     return axios.post(API_URL + 'signup', {
-      username: user.username,
+      fullname: user.fullname,
       email: user.email,
-      password: user.password
+      password: user.password,
+      phone_number:user.phone_number
     });
   }
 }
