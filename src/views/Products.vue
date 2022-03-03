@@ -36,31 +36,58 @@
         </select>
       </div>
     </div>
-    <div class="col-6 col-sm-4" >
-        <div class="card" >
-            <img src="" class="card-img-top" alt="...">
+    <div class="create">
+      <button type="button" class="btn btn-primary btn-lg">+Create new product</button>
+</div>
+    
+    <div class="row row-cols-1 row-cols-sm-6">
+        <div iv v-for="product in products" :key="product.title" class="card" >
+            <img :src="product.img" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+              <h4 class="card-title">{{product.title}}</h4>
+              <h5 class="card-title">R{{product.price}}</h5>
+              <p class="card-text">{{product.description}}</p>
               <div class="d-flex mb-3">
               <input type="number" class="form-control" value=1 min=1 >
-              <button type="button" class="btn btn-secondary ms-3" ><i class="fas fa-cart-plus"></i>Add</button>
+              <button @click="addToCart()" type="button" class="btn btn-secondary ms-3" ><i class="fas fa-cart-plus"></i>Add</button>
               </div>
-              <button class="btn btn-primary"  ><i class="fas fa-pencil-alt"></i>Update</button>
+              <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fas fa-pencil-alt"></i>Update</button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                <div class="modal-content">
+                 <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
               <button   class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
               
             </div>
           </div>
+          </div>
     </div>
-</div>
+ 
+  
    
 </template>
 
 <script>
+
 export default {
   data(){
     return{
-      products:[]
+      products:[],
+    
+    
     };
   },
   mounted() {
@@ -73,7 +100,9 @@ export default {
     });
 
   },
+methods:{
 
+}
 };
 </script>
 
@@ -82,6 +111,10 @@ export default {
 width: 100%;
 height: 100vh;
 background-color:#444444;
+}
+.create{
+  margin-left: 7%;
+  margin-bottom: 0%;
 }
 
 </style>

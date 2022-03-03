@@ -13,7 +13,8 @@
           <router-link to="/Products" class="nav-link" >Products</router-link>
           <router-link to="/Login" class="nav-link" >Login</router-link>
           <router-link to="/Register" class="nav-link" >Sign Up</router-link>
-          <router-link to="/Cart" class="nav-link" ><i class="fas fa-shopping-cart"></i>Cart</router-link>
+          <router-link to="/Cart" class="nav-link" ><i class="fas fa-shopping-cart"></i>Cart<span id="badge" style="color: white"></span
+              ></router-link>
            <router-link to="/Profile" class="nav-link" >Profile</router-link>
    
         
