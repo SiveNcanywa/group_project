@@ -5,5 +5,6 @@ class UserService {
   getPublicContent() {
     return axios.get(API_URL , {headers:authHeader()} );
   }
+  
 }
 export default new UserService();

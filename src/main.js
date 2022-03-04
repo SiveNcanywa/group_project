@@ -11,6 +11,7 @@ import Vue3Autocounter from 'vue3-autocounter';
 createApp(App)
   .use(router)
   .use(store)
+  .use(views)
   .component('vue3-autocounter', Vue3Autocounter)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
