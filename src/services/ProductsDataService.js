@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const API_URL = "http://qcars-backend-finale.herokuapp.com/users/";
 class productDataService {
   getAll() {
@@ -19,4 +20,4 @@ class productDataService {
   
  
 }
-export default new ProductsDataService;
+export default new productDataService;

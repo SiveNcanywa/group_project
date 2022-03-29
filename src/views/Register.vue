@@ -26,7 +26,7 @@
         <input type="number" class="inputFields" id="phone_number" name="phone_number" v-model="phone_number" placeholder="phone_number"  required/>
       </li>
       <li id="center-btn">
-        <input type="submit" id="join-btn" name="join" alt="Join" value="Join">
+        <input type="submit" id="join-btn" name="register" alt="Join" value="Register">
       </li>
     </ul>
   </form>

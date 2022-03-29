@@ -6,13 +6,7 @@
         <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
         <p>Bringing You Quality Is Our Priority</p>
       </div>
-      <form
-        @submit.prevent="login"
-       
-       
-        class="signupForm"
-      
-      >
+      <form @submit.prevent="login" class="signupForm">
         <h2>Sign In</h2>
         <ul class="noBullet">
           <li>
@@ -83,6 +77,7 @@ export default {
       .then((response)=>response.json())
       .then((json)=>{
         console.log(json);
+        if(!json.jwt) return alert('Cant log in')
         alert("User logged in");
         localStorage.setItem("jwt",json.jwt);
         this.$router.push({name:"Products"})

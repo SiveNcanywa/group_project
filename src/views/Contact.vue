@@ -56,6 +56,9 @@ export default {
 button {
   overflow: visible;
 }
+option{
+  color: black;
+}
 
 button, select {
   text-transform: none;
