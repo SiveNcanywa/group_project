@@ -18,8 +18,6 @@
               name="fullname"
               v-model="fullname"
               placeholder="fullname"
-             
-              oninput="return fullNameValidation(this.value)"
               required
             />
           </li>
@@ -32,8 +30,6 @@
               name="password"
               v-model="password"
               placeholder="Password"
-             
-              oninput="return passwordValidation(this.value)"
               required
             />
           </li>
@@ -54,37 +50,45 @@
   </div>
 </template>
 <script>
+import Products from '../views/Products.vue'
 export default {
   data(){
     return{
-      
-      email:"",
+      fullname:"",
       password:"",
     };
   },
+  components:{Products},
   methods:{
-    login(){
-      fetch("http://qcars-backend-finale.herokuapp.com/users/signin",{
-        method:"POST",
-        body:JSON.stringify({
-          fullname:this.fullname,
-          password:this.password
+    login() {
+      this.loading = false;
+      const details = {
+        fullname: this.fullname,
+        password: this.password,
+      };
+      console.log("details");
+      fetch("http://qcars-backend-finale.herokuapp.com/users/signin", {
+        method: "POST",
+        // mode: "no-cors",
+        body: JSON.stringify({
+          fullname: this.fullname,
+          password: this.password,
         }),
-        headers:{
-           "Content-type":"application/json;charset=UTF-8",
+        headers: {
+          "Content-type": "application/json;charset=UTF-8",
         },
       })
-      .then((response)=>response.json())
-      .then((json)=>{
-        console.log(json);
-        if(!json.jwt) return alert('Cant log in')
-        alert("User logged in");
-        localStorage.setItem("jwt",json.jwt);
-        this.$router.push({name:"Products"})
-      })
-      .catch((err)=>{
-        alert(err);
-      });
+        .then((response) => response.json())
+        .then((user) => {
+          console.log(user);
+    
+          alert("User logged in");
+          localStorage.setItem("jwt", user.jwt);
+        this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
     },
   },
 };

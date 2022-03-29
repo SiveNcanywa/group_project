@@ -7,7 +7,6 @@ import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
 import Products from '../views/Products.vue'
 import Contact from '../views/Contact.vue'
-import addProduct from '../views/addProduct.vue'
 
 const routes = [
   {
@@ -50,12 +49,8 @@ const routes = [
     path: '/Products',
     name: 'Products',
     component: Products
-  },
-  {
-    path:'/addProduct',
-    name:'addProduct',
-    component: () => import("../views/addProduct")
-  },
+  }
+  
   
 ]
 

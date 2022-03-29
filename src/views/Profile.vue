@@ -3,7 +3,7 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png"><span class="font-weight-bold">{{currentUsers.fullname}}</span><span class="text-black-50">{{currentUsers.email}}</span><span class="text-black-50">{{currentUsers.phone_number}}</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png"><span class="font-weight-bold">{{fullname}}</span><span class="text-black-50">{{email}}</span><span class="text-black-50">{{phone_number}}</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -42,11 +42,11 @@ export default {
       return this.$store.state.auth.users;
     }
   },
-  mounted() {
-    if (!this.currentUsers) {
-      this.$router.push('/login');
-    }
-  }
+//   mounted() {
+//     if (!this.currentUsers) {
+//       this.$router.push('/login');
+//     }
+//   }
 };
 </script>
 <style scoped>

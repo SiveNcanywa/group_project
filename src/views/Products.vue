@@ -31,7 +31,7 @@
           onchange="sortPrice()"
         >
           <option value="ascending">Ascending</option>
-          <option value="Descending">Descending</option>
+          <option value="Descending">Error: TypeError: Failed to execute 'fetch' on 'Window': cannot convert to dictionary.Descending</option>
         </select>
       </div>
     </div>
@@ -185,7 +185,7 @@
               </div>
             </div>
           </div>
-          <button   v-on:click="deleteProduct(product_id)" class="btn btn-danger">
+          <button   v-on:click="deleteProduct(id)" class="btn btn-danger">
             <i class="fas fa-trash-alt"></i>Delete
           </button>
         </div>
@@ -225,8 +225,8 @@ fetch("http://qcars-backend-finale.herokuapp.com/products/", + id, {
   console.log(data);
   alert("Product removed");
 } )
-.catch((error) => {
-  console.error("Error:", error);
+.catch((err) => {
+  console.error("Error:", err);
 });
    },
    
@@ -259,7 +259,7 @@ fetch("http://qcars-backend-finale.herokuapp.com/products/", + id, {
     },
    },
    addToCart(){
-
+    
    },
    createProduct(){
   console.log(this.title, this.category, this.img,this.description,this.price);

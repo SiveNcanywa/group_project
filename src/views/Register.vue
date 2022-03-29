@@ -11,11 +11,11 @@
     <ul class="noBullet">
       <li>
         <label for="fullname"></label>
-        <input type="text" class="inputFields" id="fullname" name="fullname"  v-model="fullname" placeholder="fullname"  oninput="return fullNameValidation(this.value)" required/>
+        <input type="text" class="inputFields" id="fullname" name="fullname"  v-model="fullname" placeholder="fullname"   required/>
       </li>
       <li>
         <label for="password"></label>
-        <input type="password" class="inputFields" id="password" name="password" v-model="password" placeholder="Password"  oninput="return passwordValidation(this.value)" required/>
+        <input type="password" class="inputFields" id="password" name="password" v-model="password" placeholder="Password"  required/>
       </li>
       <li>
         <label for="email"></label>
@@ -44,33 +44,37 @@ export default {
     };
   },
   methods:{
-    register(){
+     register() {
       console.log(this.password);
-      fetch("http://qcars-backend-finale.herokuapp.com/users/signup",{
-        method:"POST",
-        body:JSON.stringify({
-          fullname:this.fullname,
-          email:this.email,
-        phone_number:this.phone_number,
-        password:this.password,
-        }),
-        headers:{
-          "Content-type":"application/json;charset=UTF-8",
+      let newUser = {
+        fullname: this.fullname,
+        email: this.email,
+        phone_number: this.phone_number,
+        password: this.password,
+      };
+      console.log(newUser);
+      fetch("http://qcars-backend-finale.herokuapp.com/users/signup", {
+        method: "POST",
+        // mode: "no-cors",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-type": "application/json;charset=UTF-8",
         },
       })
-      .then((response)=>response.json())
-      .then((json)=>{
-        console.log(json);
-        alert("User registered");
-        localStorage.setItem("jwt",json.jwt);
-        this.$router.push({name:"Products"});
-      })
-      .catch((err)=>{
-        alert(err);
-      });
+        .then((response) => response.json())
+        .then((user) => {
+          console.log(user);
+          alert("User registered");
+          localStorage.setItem("jwt", user.jwt);
+          this.$router.push({ name: 'Products' });
+        })
+        .catch((err) => {
+          alert(err);
+        });
     },
-  },
-};
+    },
+  };
+
 
 </script>
 <style scoped>
